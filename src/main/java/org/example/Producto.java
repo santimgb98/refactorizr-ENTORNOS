@@ -23,8 +23,8 @@ public class Producto {
     public void setCantidad(int cantidad) {this.cantidad = cantidad;}
     public void setSku(String sku) {this.sku = sku;}
 
-    public void mostrarProductos(){
-        System.out.println("******* "+this.getNombre()+" *******");
+    public void mostrarProductos() {
+        System.out.println("******* " + this.getNombre() + " *******");
         System.out.println("Precio: " + this.getPrecio() +
                 "\nCantidad: " + this.getCantidad() +
                 "\nSku: " + this.getSku());

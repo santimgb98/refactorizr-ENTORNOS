@@ -41,7 +41,7 @@ public class Tienda {
                 "\nDirección: " + this.getDireccion() +
                 "\nTeléfono: " + this.getTelefono());
     }
-    public void comprarProductos(){}
-
-
+    public String toString(String nombre, String direccion, String telefono){
+        return "Nombre: "+nombre+"\rDirección: "+direccion+"\rTeléfono: "+telefono;
+    }
 }
