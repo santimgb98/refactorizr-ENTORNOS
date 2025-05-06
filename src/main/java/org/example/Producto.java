@@ -24,6 +24,7 @@ public class Producto {
     public void setSku(String sku) {this.sku = sku;}
 
     public void mostrarProductos() {
+        System.out.println("Lista de productos: ");
         System.out.println("******* " + this.getNombre() + " *******");
         System.out.println("Precio: " + this.getPrecio() +
                 "\nCantidad: " + this.getCantidad() +

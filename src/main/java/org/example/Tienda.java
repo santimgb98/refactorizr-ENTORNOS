@@ -36,6 +36,7 @@ public class Tienda {
     public void setTelefono(String telefono) {this.telefono = telefono;}
 
     public void mostrarTiendas(){
+        System.out.println("Lista de tiendas: ");
         System.out.println("******* TIENDA *******");
         System.out.println("Nombre: " + this.getNombre() +
                 "\nDirección: " + this.getDireccion() +

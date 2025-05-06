@@ -10,11 +10,13 @@ public class Main {
         ArrayList<Tienda> listaTiendas = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+        // Creación de las tiendas
         Tienda tienda1 = new Tienda("Mercadona","Calle 123","1234567");
         listaTiendas.add(tienda1);
         Tienda tienda2 = new Tienda("Froiz","Calle 456","7654321");
         listaTiendas.add(tienda2);
 
+        // Creación de los trabajadores
         Trabajador trabajador1 = new Trabajador("Juan","Perez","Calle 123","1234567",tienda1);
         listaTrabajadores.add(trabajador1);
         Trabajador trabajador2 = new Trabajador("Maria","Lopez","Calle 456","7654321",tienda1);
@@ -24,6 +26,7 @@ public class Main {
         Trabajador trabajador4 = new Trabajador("Ana","Garcia","Calle 101","0987654",tienda2);
         listaTrabajadores.add(trabajador4);
 
+        // Creación de los productos
         Producto producto1 = new Producto("Patatas", 1.5, 100, "1234");
         listaProductos.add(producto1);
         Producto producto2 = new Producto("Manzanas",2.5,200,"5678");
@@ -57,19 +60,16 @@ public class Main {
 
             switch (opcion) {
                 case 1: // Mostrar tiendas
-                    System.out.println("Lista de tiendas: ");
                     for( int i = 0; i<listaTiendas.size();i++) {
                         listaTiendas.get(i).mostrarTiendas();
                     }
                     break;
                 case 2: // Mostrar trabajadores
-                    System.out.println("Lista de trabajadores: ");
                     for( int i = 0; i<listaTrabajadores.size();i++) {
                         listaTrabajadores.get(i).mostrarTrabajadores();
                     }
                     break;
                 case 3: // Mostrar productos
-                    System.out.println("Lista de productos: ");
                     for( int i = 0; i<listaProductos.size();i++) {
                         listaProductos.get(i).mostrarProductos();
                     }
@@ -80,25 +80,24 @@ public class Main {
                         listaProductos.get(i).mostrarProductos();
                     }
                     break;
-                case 5:
-                    // Aquí va el código para vender productos
-                    System.out.println("Vender productos...");
-                    System.out.println("Ingrese el SKU del producto que desea vender: ");
+                case 5:// Comprar productos
+                    System.out.println("Comprar productos...");
+                    System.out.println("Ingrese el SKU del producto que desea comprar: ");
                     String skuABuscar = scanner.next();
-                    System.out.println("Ingrese la cantidad que desea vender: ");
-                    int cantidadAVender = scanner.nextInt();
+                    System.out.println("Ingrese la cantidad que desea comprar: ");
+                    int cantidadAComprar = scanner.nextInt();
                     for (Producto producto : listaProductos) {
                         if (producto.sku.equals(skuABuscar)) {
-                            if (producto.cantidad >= cantidadAVender) {
+                            if (producto.cantidad >= cantidadAComprar) {
                                 System.out.println("Compra exitosa!");
-                                producto.cantidad -= cantidadAVender;
+                                producto.cantidad -= cantidadAComprar;
                             } else {
                                 System.out.println("No hay suficiente cantidad de este producto.");
                             }
                         }
                     }
                     break;
-                case 6:
+                case 6: // Agregar nuevo producto
                     System.out.println("Introduce el nombre del nuevo producto: ");
                     String nombre = scanner.next();
                     System.out.println("Introduce el precio del nuevo producto: ");
@@ -111,7 +110,7 @@ public class Main {
                     listaProductos.add(productoNuevo);
                     System.out.println("Producto agregado con éxito!");
                     break;
-                case 7:
+                case 7:// Agregar nuevo trabajador
                     System.out.println("Introduce el nombre del nuevo trabajador: ");
                     String nombreTrabajador = scanner.next();
                     System.out.println("Introduce el apellido del nuevo trabajador: ");
@@ -120,15 +119,20 @@ public class Main {
                     String direccion = scanner.next();
                     System.out.println("Introduce su teléfono: ");
                     String telefono = scanner.next();
-                    scanner.next();
                     System.out.println("Selecciona su tienda:");
                     String tienda = scanner.next();
-                    if(tienda.equals("tienda1")) {
-                        Trabajador trabajadorNuevo = new Trabajador(nombreTrabajador, apellido, direccion, telefono, tienda1);
-                        listaTrabajadores.add(trabajadorNuevo);
-                    }else if (tienda.equals("tienda2")){
-                        Trabajador trabajadorNuevo = new Trabajador(nombreTrabajador, apellido, direccion, telefono, tienda2);
-                        listaTrabajadores.add(trabajadorNuevo);
+                    try {
+                        if (tienda.equals("tienda1")) {
+                            Trabajador trabajadorNuevo = new Trabajador(nombreTrabajador, apellido, direccion, telefono, tienda1);
+                            listaTrabajadores.add(trabajadorNuevo);
+                        } else if (tienda.equals("tienda2")) {
+                            Trabajador trabajadorNuevo = new Trabajador(nombreTrabajador, apellido, direccion, telefono, tienda2);
+                            listaTrabajadores.add(trabajadorNuevo);
+                        }
+                    }catch(Error error){
+                        System.out.println("No se puede añadir trabajador debido a que se produce el siguiente error: "+error);
+                    }finally {
+                        System.out.println("Trabajador agregado con éxito!");
                     }
                     break;
                 case 8:

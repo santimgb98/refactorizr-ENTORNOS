@@ -28,6 +28,7 @@ public class Trabajador {
     public void setTienda(Tienda tienda) {this.tienda = tienda;}
 
     public void mostrarTrabajadores(){
+        System.out.println("Lista de trabajadores: ");
         System.out.println("******* "+this.getNombre()+" "+this.getApellido()+" *******");
         System.out.println("Dirección: " + this.getDireccion() +
                 "\nTeléfono: " + this.getTelefono() +
